@@ -1,43 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SZ 10
+#define Stack 100
 
-#define T int
-#define SIZE 1000
-#define true 1==1
-#define false 1!=1
-/*
-typedef int boolean;
-int cursor = -1;
-T Stack[SIZE];
+int array[Stack];
+int i = -1;
 
-boolean push(T data)
+void push(int x)
 {
-    if (cursor < SIZE)
-    {
-        Stack[++cursor] = data;
-        return true;
-    }
-    else
-    {
-        printf("%s \n","Stack overflow");
-        return false;
-    }
+        i++;
+        array[i]=x;
+
 }
 
-T pop()
+void pop()
 {
-    if(cursor !=1 )
+    while( i != -1)
     {
-        return Stack[cursor--];
+        printf(" %d", array[i]);
+        i--;
     }
-    else
-    {
-        printf("%s \n", "Stack is empty");
-        return -1;
-    }
+
 }
-*/
+
+void toBin(int n) //функция перевода в двоичную систему
+{
+    do
+    {
+        push(n%2);
+        n = n/2;
+
+    }
+    while(n!=0);
+    pop();
+    printf("\n");
+}
 
 typedef struct
 {
@@ -137,27 +134,7 @@ void printQueue()
     printf(" ]\n");
 }
 
-/*
-void toBin (int x)
-{
-    int n;
-    while(x!=0)
-    {
-        x=x/2;
-        n=x%2;
-        push(n);
-    }
-}
 
-void bin()
-{
-      while (cursor!=-1)
-    {
-        printf("%d", pop());
-    }
-    printf("\n");
-}
-*/
 
 int main()
 {
@@ -185,10 +162,16 @@ int main()
     printQueue();
 
     //задание по переводу числа из десятичной в двоичную
-/*
+    push(5); //проверка работы стека
+    push(6); //проверка работы стека
+    pop();   //проверка работы стека
+    printf("\n");
+    printf("\n");
     toBin(5);
-    bin();
-*/
+    toBin(30);
+    toBin(89);
+    toBin(1);
+
 
     return 0;
 }
